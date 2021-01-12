@@ -1,0 +1,16 @@
+{
+  "name": "slingo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron index.js",
+    "build": "electron-packager ./ spanishLingo --platform=win32 --arch=x64 --overwrite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron-packager": "^15.2.0",
+    "electron": "^10.1.3"
+  }
+}

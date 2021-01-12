@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slingo</title>
+
+    <link async defer rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script async defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="overflow: hidden;">
+
+    <div id="lettersContainer" class="btn-group" style="width: 100%;"></div>
+    <button class="btn btn-block btn-secondary btn-lg rounded-0" onclick="capitalize(this)">Upper Case</button>
+
+<script>
+const { clipboard } = require("electron")
+const spanishChars = "áéíóúüñ¿¡"
+
+function renderChars (chars) {
+    for (var i = 0; i < chars.length; i++) {
+        const char = chars[i]
+        const charEl = document.createElement("button")
+
+        charEl.classList = "btn btn-primary rounded-0 btn-lg"
+        charEl.innerText = char
+        charEl.onclick = () => clipboard.writeText(char)
+
+        lettersContainer.appendChild(charEl)
+    }
+}
+
+renderChars(spanishChars)
+
+function capitalize (el) {
+    lettersContainer.innerHTML = ""
+    if (el.innerText == "Upper Case") {
+        el.innerText = "Lower Case"
+        renderChars(spanishChars.toUpperCase())
+    } else {    
+        el.innerText = "Upper Case"
+        renderChars(spanishChars)
+    }
+}
+</script>
+</body>
+</html>
